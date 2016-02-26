@@ -124,11 +124,21 @@ void Hotboards_leds::toggle( uint8_t led )
 
 uint8_t Hotboards_leds::read( uint8_t led )
 {
-    return bitRead( _state, led );
-}
-uint8_t Hotboards_leds::read( void )
-{
-    return _state;
+    uint8_t i;
+    uint8_t val = 0;
+
+    if( led == 0xff )
+    {
+        for( i=0 ; i<_leds ; i++ )
+        {
+            bitWrite( val, i, bitRead( _state, i ) );
+        }
+    }
+    else
+    {
+        val = bitRead( _state, led );
+    }
+    return val;
 }
 
 void Hotboards_leds::write( uint8_t val )

@@ -24,9 +24,8 @@ class Hotboards_leds
         void turnOn( uint8_t led=0 );
         void turnOff( uint8_t led=0 );
         void toggle( uint8_t led=0 );
-        uint8_t read( uint8_t led=0 );
-        uint8_t read( void );
         void write( uint8_t val );
+        uint8_t read( uint8_t led=0xff );
 
     private :
         void begin( uint8_t led, uint8_t pin );
