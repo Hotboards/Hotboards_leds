@@ -48,9 +48,9 @@ led.turnOff( );
 
 /* creamos un bus de leds */
 Hotboards_leds leds( 8, 7, 6, 5 );
-/* encedemos el led 3 que esta en el pin 8 */
+/* apagamos el led 3 que esta en el pin 8 */
 leds.turnOff( 3 );
-/* encedemos el led 0 que esta en el pin 5 */
+/* apagamos el led 0 que esta en el pin 5 */
 leds.turnOff( 0 );
 ```
 
@@ -112,3 +112,12 @@ uint8_t val1 = leds.write( 1 );
 /* leemos el estado del led 1 (pin 5) */
 uint8_t val2 = leds.write( 0 );
 ```
+
+Ejemplos
+--------
+
+- [Prendiendo y apagando un led](https://github.com/Hotboards/Hotboards_leds/blob/master/examples/led/led.ino)
+- [Parpadeando un led](https://github.com/Hotboards/Hotboards_leds/blob/master/examples/toggle/toggle.ino)
+- [Escribiendo valores en un led](https://github.com/Hotboards/Hotboards_leds/blob/master/examples/writing/writing.ino)
+- [Escribiendo valores en un bus de leds](https://github.com/Hotboards/Hotboards_leds/blob/master/examples/leds/leds.ino)
+- [Manipulado leds en varias formas](https://github.com/Hotboards/Hotboards_leds/blob/master/examples/handling_leds/handling_leds.ino)
