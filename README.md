@@ -1,7 +1,7 @@
 Hotboards_leds
 ===============
 
-Genial libreria de proposito general para controlar leds, puedes encender, apagar y togglear, un led a la vez y/o varios a la vez. Descarga la libreria en formato [**zip**](https://github.com/Hotboards/Hotboards_leds/archive/master.zip), renombre el archivo ( _solo quita el **-master**_ ) e importala a tu Arduino IDE com dice [aqui](http://developer.mbed.org/cookbook/Working-with-Libraries).
+Genial libreria de proposito general para controlar leds, puedes encender, apagar y togglear, un led a la vez y/o varios a la vez. Descarga la libreria en formato [**zip**](https://github.com/Hotboards/Hotboards_leds/archive/master.zip), renombre el archivo ( _solo quita el **-master**_ ) e importala a tu Arduino IDE com dice [**aqui**](http://developer.mbed.org/cookbook/Working-with-Libraries).
 
 API
 ---
