@@ -17,14 +17,17 @@
  * @code
  * #include "Hotboards_leds.h"
  *
- * Hotboards_leds led( PB_5 );
+ * Hotboards_leds led( 5 );
  *
- * int main( void )
+ * void setup( void )
  * {
- *     for(;;){
- *         led.toggle( );
- *         delay( 0.2 );
- *     }
+ *     pin.mode( OUTPUT );
+ * }
+ *
+ * void loop( void )
+ * {
+ *     led.toggle( );
+ *     delay( 200 );
  * }
  * @endcode
  */
@@ -165,7 +168,7 @@ class Hotboards_leds
           *   led.turnOn( );
           *
           *   // instance a bus with 4 leds
-          *   Hotboards_leds leds( 8, 7, 6, 5 );
+          *   Hotboards_leds leds( 5, 6, 7, 8 );
           *   // turn on led 2 on pin 7
           *   leds.turnOn( 2 );
           *   // turn on led 0 on pin 5
@@ -184,7 +187,7 @@ class Hotboards_leds
           *   led.turnOff( );
           *
           *   // instance a bus with 4 leds
-          *   Hotboards_leds leds( 8, 7, 6, 5 );
+          *   Hotboards_leds leds( 5, 6, 7, 8 );
           *   // turn off led 3 on pin 8
           *   leds.turnOff( 3 );
           *   // turn off led 0 on pin 5
@@ -204,7 +207,7 @@ class Hotboards_leds
           *
           *   // instance a bus with 3 leds
           *   Hotboards_leds leds( 2, 3, 4 );
-          *   // toggle led 2 on pin 2
+          *   // toggle led 2 on pin 4
           *   leds.toggle( 2 );
           *   // toggle led 1 on pin 3
           *   leds.toggle( 1 );
@@ -221,13 +224,13 @@ class Hotboards_leds
           *   Hotboards_leds led( 7 );
           *   led.write( 1 );
           *
-          *   // instance a 4 leds bus (pin2->led3 ..... pin5->led0)
+          *   // instance a 4 leds bus (pin2->led0 ..... pin5->led3)
           *   Hotboards_leds leds( 2, 3, 4, 5 );
           *   // write the 10 value (it will accept values from 0 to 15)
           *   leds.write( 10 );
           *
-          *   // instance an 8 leds bus (pin4->led7 ..... pin3->led0)
-          *   Hotboards_leds leds( 4, 3, 2, 6, 5, 7, 8, 9 );
+          *   // instance an 8 leds bus (pin4->led0 ..... pin3->led7)
+          *   Hotboards_leds leds( 4, 5, 6, 7, 8, 9, 10, 12 );
           *   // write the 134 value (it will accept values from 0 to 255)
           *   leds.write( 134 );
           * @endcode
@@ -239,9 +242,9 @@ class Hotboards_leds
           *
           * Example:
           * @code
-          * instance a 4 pins led bus (pin2->led3 ..... pin5->led0)
-          *   Hotboards_expander leds( Expander_7, 0, 1, 2, 3 );
-          *   // write a '1' on pin2 (pin 2) and a '0' on pin3 (pin 3)
+          * instance a 4 pins led bus (pin2->led0 ..... pin5->led3)
+          *   Hotboards_expander leds( 2, 3, 4, 5 );
+          *   // write a '1' (turn on) led2 (pin 4) and a '0' (turn off) on led3 (pin 5)
           *   leds.write( 2, 1 );
           *   leds.write( 3, 0 );
           * @endcode
@@ -257,17 +260,17 @@ class Hotboards_leds
           *   Hotboards_leds led( 7 );
           *   uint8_t var = led.read( );
           *
-          *   // instance an 8 leds bus (pin9->led7 ..... pin2->led0)
-          *   Hotboards_leds leds( 9, 8, 7, 6, 5, 4, 3, 2 );
+          *   // instance an 8 leds bus (pin2->led0 ..... pin9->led7)
+          *   Hotboards_leds leds( 2, 3, 4, 5, 6, 7, 8, 9 );
           *   // read the leds value (from 0 to 255)
           *   uint8_t var = leds.read( );
           *
-          *   // nstance a 4 leds bus (pin2->led3 ..... pin5->led0)
+          *   // nstance a 4 leds bus (pin2->led0 ..... pin5->led3)
           *   Hotboards_leds leds( 2, 3, 4, 5 );
-          *   // read led 1 state (pin 4)
-          *   uint8_t val1 = leds.write( 1 );
-          *   // read led 0 state (pin 5)
-          *   uint8_t val2 = leds.write( 0 );
+          *   // read led 1 state (pin 3)
+          *   uint8_t val1 = leds.read( 1 );
+          *   // read led 0 state (pin 2)
+          *   uint8_t val2 = leds.read( 0 );
           * @endcode
           */
         uint8_t read( uint8_t led=0xff );
