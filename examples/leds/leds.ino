@@ -2,21 +2,21 @@
  * Author Diego Perez (http://hotboards.org)
  * Write a variable into a bus led
  * conetions:
- * 13 --- led0
- * 12 --- led1
- * 11 --- led2
- * 10 --- led3
- * 9 ---- led4
- * 8 ---- led5
- * 7 ---- led6
- * 6 ---- led7
+ * 13 --- led7
+ * 12 --- led6
+ * 11 --- led5
+ * 10 --- led4
+ * 9 ---- led3
+ * 8 ---- led2
+ * 7 ---- led1
+ * 6 ---- led0
  */
 
 #include <Arduino.h>
 #include <Hotboards_leds.h>
 
 // lets create a bus with up to 8 leds
-//                  bit7---------------------bit0
+//                  bit0---------------------bit7
 Hotboards_leds leds( 6, 7, 8, 9, 10, 11, 12, 13 );
 // if our led will turn on with a LOW value, then we create the leds object
 // with an extra parameter: Hotboards_leds led( 6, 7, 8, 9, 10, 11, 12, 13, LOW );

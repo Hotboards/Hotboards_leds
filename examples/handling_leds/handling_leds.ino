@@ -5,14 +5,14 @@
  * the following thirt ones also are grouped in a bus, but manipulated
  * individualy and finally led 8 is manipulated individualy
  * conections:
- * 13 --- led0 -\
- * 12 --- led1  |  leds
- * 11 --- led2  |
- * 10 --- led3 -/
- * 9 ---- led4 -\
- * 8 ---- led5  |  leds765
- * 7 ---- led6 -/
- * 6 ---- led7 ->  led8
+ * 13 --- led7 -\
+ * 12 --- led6  |  leds
+ * 11 --- led5  |
+ * 10 --- led4 -/
+ * 9 ---- led3 -\
+ * 8 ---- led2  |  leds123
+ * 7 ---- led1 -/
+ * 6 ---- led0 ->  led0
  */
 
 #include <Arduino.h>
@@ -21,9 +21,9 @@
 // create a bus with only four leds
 Hotboards_leds leds( 10, 11, 12, 13 );
 // create a bus with 3 leds that we will manipulate individualy
-Hotboards_leds leds765( 7, 8, 9 );
+Hotboards_leds leds123( 7, 8, 9 );
 // create a single led on pin 6
-Hotboards_leds led8( 6 );
+Hotboards_leds led0( 6 );
 
 uint8_t counter;
 
@@ -35,18 +35,18 @@ void setup( void )
 void loop( void )
 {
     // turn on leds 5, 6 and 7 one by one
-    leds765.turnOn( 0 ); // led5
-    leds765.turnOn( 1 ); // led6
-    leds765.turnOn( 2 ); // led7
+    leds123.turnOn( 0 ); // led1
+    leds123.turnOn( 1 ); // led2
+    leds123.turnOn( 2 ); // led3
     delay( 200 );
     // turn off leds 5, 6 and 7 one by one
-    leds765.turnOff( 0 ); // led5
-    leds765.turnOff( 1 ); // led6
-    leds765.turnOff( 2 ); // led7
+    leds123.turnOff( 0 ); // led1
+    leds123.turnOff( 1 ); // led2
+    leds123.turnOff( 2 ); // led3
     delay( 200 );
-    // toggle led number 8
-    led8.toggle( );
-    // write the fouth lsb of variable counter on leds 1,2,3 and 4
+    // toggle led number 0
+    led0.toggle( );
+    // write the fourth lsb of variable counter on leds 4,5,6 and 7
     leds.write( counter );
     counter++;
 }
