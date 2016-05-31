@@ -15,7 +15,7 @@ Hotboards_leds::Hotboards_leds( int led0, bool on )
     begin( 0, led0 );
 }
 
-Hotboards_leds::Hotboards_leds( int led1, int led0, bool on )
+Hotboards_leds::Hotboards_leds( int led0, int led1, bool on )
 {
     _leds = 2;
     _state = 0;
@@ -24,7 +24,7 @@ Hotboards_leds::Hotboards_leds( int led1, int led0, bool on )
     begin( 1, led1 );
 }
 
-Hotboards_leds::Hotboards_leds( int led2, int led1, int led0, bool on )
+Hotboards_leds::Hotboards_leds( int led0, int led1, int led2, bool on )
 {
     _leds = 3;
     _state = 0;
@@ -34,7 +34,7 @@ Hotboards_leds::Hotboards_leds( int led2, int led1, int led0, bool on )
     begin( 2, led2 );
 }
 
-Hotboards_leds::Hotboards_leds( int led3, int led2, int led1, int led0, bool on )
+Hotboards_leds::Hotboards_leds( int led0, int led1, int led2, int led3, bool on )
 {
     _leds = 4;
     _state = 0;
@@ -45,7 +45,7 @@ Hotboards_leds::Hotboards_leds( int led3, int led2, int led1, int led0, bool on 
     begin( 3, led3 );
 }
 
-Hotboards_leds::Hotboards_leds( int led4, int led3, int led2, int led1, int led0, bool on )
+Hotboards_leds::Hotboards_leds( int led0, int led1, int led2, int led3, int led4, bool on )
 {
     _leds = 5;
     _state = 0;
@@ -57,7 +57,7 @@ Hotboards_leds::Hotboards_leds( int led4, int led3, int led2, int led1, int led0
     begin( 4, led4 );
 }
 
-Hotboards_leds::Hotboards_leds( int led5, int led4, int led3, int led2, int led1, int led0, bool on )
+Hotboards_leds::Hotboards_leds( int led0, int led1, int led2, int led3, int led4, int led5, bool on )
 {
     _leds = 6;
     _state = 0;
@@ -70,7 +70,7 @@ Hotboards_leds::Hotboards_leds( int led5, int led4, int led3, int led2, int led1
     begin( 5, led5 );
 }
 
-Hotboards_leds::Hotboards_leds( int led6, int led5, int led4, int led3, int led2, int led1, int led0, bool on )
+Hotboards_leds::Hotboards_leds( int led0, int led1, int led2, int led3, int led4, int led5, int led6, bool on )
 {
     _leds = 7;
     _state =  0;
@@ -84,7 +84,7 @@ Hotboards_leds::Hotboards_leds( int led6, int led5, int led4, int led3, int led2
     begin( 6, led6 );
 }
 
-Hotboards_leds::Hotboards_leds( int led7, int led6, int led5, int led4, int led3, int led2, int led1, int led0, bool on )
+Hotboards_leds::Hotboards_leds( int led0, int led1, int led2, int led3, int led4, int led5, int led6, int led7, bool on )
 {
     _leds = 8;
     _state = 0;
@@ -154,6 +154,18 @@ void Hotboards_leds::write( uint8_t val )
         {
             turnOff( i );
         }
+    }
+}
+
+void Hotboards_leds::write( uint8_t pin, bool val )
+{
+    if( val == 1 )
+    {
+        turnOn( pin );
+    }
+    else
+    {
+        turnOff( pin );
     }
 }
 

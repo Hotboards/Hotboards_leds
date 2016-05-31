@@ -54,7 +54,7 @@ class Hotboards_leds
           *   Hotboards_leds led( 5, 6 );
           * @endcode
           */
-        Hotboards_leds( int led1, int led0, bool on=HIGH );
+        Hotboards_leds( int led0, int led1, bool on=HIGH );
 
         /** Create Hotboards_leds instance for three leds
           * @param led2 pin where the led 2 will be connected
@@ -68,7 +68,7 @@ class Hotboards_leds
           *   Hotboards_leds led( 5, 6, 7 );
           * @endcode
           */
-        Hotboards_leds( int led2, int led1, int led0, bool on=HIGH );
+        Hotboards_leds( int led0, int led1, int led2, bool on=HIGH );
 
         /** Create Hotboards_leds instance for four leds
           * @param led3 pin where the led 3 will be connected
@@ -83,7 +83,7 @@ class Hotboards_leds
           *   Hotboards_leds led( 5, 6, 7, 8 );
           * @endcode
           */
-        Hotboards_leds( int led3, int led2, int led1, int led0, bool on=HIGH );
+        Hotboards_leds( int led0, int led1, int led2, int led3, bool on=HIGH );
 
         /** Create Hotboards_leds instance for five leds
           * @param led4 pin where the led 4 will be connected
@@ -99,7 +99,7 @@ class Hotboards_leds
           *   Hotboards_leds led( 5, 6, 7, 8, 9 );
           * @endcode
           */
-        Hotboards_leds( int led4, int led3, int led2, int led1, int led0, bool on=HIGH );
+        Hotboards_leds( int led0, int led1, int led2, int led3, int led4, bool on=HIGH );
 
         /** Create Hotboards_leds instance for six leds
           * @param led5 pin where the led 5 will be connected
@@ -116,7 +116,7 @@ class Hotboards_leds
           *   Hotboards_leds led( 5, 6, 7, 8, 9, 10 );
           * @endcode
           */
-        Hotboards_leds( int led5, int led4, int led3, int led2, int led1, int led0, bool on=HIGH );
+        Hotboards_leds( int led0, int led1, int led2, int led3, int led4, int led5, bool on=HIGH );
 
         /** Create Hotboards_leds instance for seven leds
           * @param led6 pin where the led 6 will be connected
@@ -134,7 +134,7 @@ class Hotboards_leds
           *   Hotboards_leds led( 5, 6, 7, 8, 9, 10, 11 );
           * @endcode
           */
-        Hotboards_leds( int led6, int led5, int led4, int led3, int led2, int led1, int led0, bool on=HIGH );
+        Hotboards_leds( int led0, int led1, int led2, int led3, int led4, int led5, int led6, bool on=HIGH );
 
         /** Create Hotboards_leds instance for eight leds
           * @param led7 pin where the led 7 will be connected
@@ -153,7 +153,7 @@ class Hotboards_leds
           *   Hotboards_leds led( 5, 6, 7, 8, 9, 10, 11, 12 );
           * @endcode
           */
-        Hotboards_leds( int led7, int led6, int led5, int led4, int led3, int led2, int led1, int led0, bool on=HIGH );
+        Hotboards_leds( int led0, int led1, int led2, int led3, int led4, int led5, int led6, int led7, bool on=HIGH );
 
         /** Turn on a single led
           * @param led led number to be turn on
@@ -212,7 +212,7 @@ class Hotboards_leds
           */
         void toggle( uint8_t led=0 );
 
-        /** Write to a single led or the entire bus
+        /** Write to an entire led bus
           * @param val value to be written
           *
           * Example:
@@ -233,6 +233,20 @@ class Hotboards_leds
           * @endcode
           */
         void write( uint8_t val );
+
+        /** Write to a single led on the bus created
+          * @param val value to be written (0 or 1)
+          *
+          * Example:
+          * @code
+          * instance a 4 pins led bus (pin2->led3 ..... pin5->led0)
+          *   Hotboards_expander leds( Expander_7, 0, 1, 2, 3 );
+          *   // write a '1' on pin2 (pin 2) and a '0' on pin3 (pin 3)
+          *   leds.write( 2, 1 );
+          *   leds.write( 3, 0 );
+          * @endcode
+          */
+        void write( uint8_t pin, bool val );
 
         /** Read a single led or the entire bus
           * @return led states
